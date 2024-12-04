@@ -1,3 +1,42 @@
+*Q1.1 - import CSV
+# Load the tidyverse package
+library(tidyverse)
+
+# Read the CSV file
+mtcars_data <- read_csv("C:/Users/jakes/Downloads/mtcars.csv")
+
+# Display the first few rows of the data
+head(mtcars_data)
+
+# View the structure of the dataset
+glimpse(mtcars_data)
+
+# Perform basic summary statistics
+summary(mtcars_data)
+
+*Q1.2
+
+# Fit a linear regression model: mpg (dependent) ~ disp (independent)
+fit <- lm(mpg ~ disp, data = mtcars)
+
+# Summary of the regression model
+summary(fit)
+tidy(fit)
+result <- 29.6 - 1.23
+result2 <- 29.6 + 1.23
+ 
+#adding predictions and residuals to dataset
+library(modelr)
+mtcars <- mtcars %>%
+  add_predictions(fit, var = "predicted") %>%
+  add_residuals(fit, var = "residuals")
+
+#check
+head(mtcars)
+
+
+
+
 *Q2
 install.packages("tidyverse")
 library(tidyverse)
